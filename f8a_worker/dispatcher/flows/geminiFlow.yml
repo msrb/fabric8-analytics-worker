@@ -1,0 +1,15 @@
+---
+flow-definitions:
+  - name: 'geminiFlow'
+    queue: '{DEPLOYMENT_PREFIX}_api_geminiFlow_v0'
+    edges:
+      - from:
+        to: 'DependencyTreeTask'
+      - from: 'DependencyTreeTask'
+        to: 'bayesianApiFlow'
+        foreach:
+          import: 'f8a_worker.dispatcher.foreach'
+          function: 'iter_dependency_tree'
+          propagate_result: true
+      - from: 'bayesianApiFlow'
+        to: 'GeminiReportTask'

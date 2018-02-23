@@ -280,6 +280,16 @@
       max_retry: 0
       queue: '{DEPLOYMENT_PREFIX}_{WORKER_ADMINISTRATION_REGION}_KeywordsSummaryTask_tagging_v0'
       storage: 'S3KeywordsSummary'
+    - name: 'DependencyTreeTask'
+      import: 'f8a_worker.workers'
+      max_retry: 0
+      queue: '{DEPLOYMENT_PREFIX}_{WORKER_ADMINISTRATION_REGION}_DependencyTreeTask_v0'
+      storage: 'BayesianPostgres'
+    - name: 'GeminiReportTask'
+      import: 'f8a_worker.workers'
+      max_retry: 0
+      queue: '{DEPLOYMENT_PREFIX}_{WORKER_ADMINISTRATION_REGION}_GeminiReportTask_v0'
+      storage: 'BayesianPostgres'
 
   flows:
     - 'bayesianFlow'
@@ -301,6 +311,7 @@
     - 'keywordsSummaryFlow'
     - 'keywordsApiSummaryFlow'
     - 'keywordsPrioritySummaryFlow'
+    - 'geminiFlow'
 
   storages:
     - name: 'BayesianPostgres'

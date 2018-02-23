@@ -52,6 +52,20 @@ def iter_dependencies_analysis(storage_pool, node_args):
         return []
 
 
+def iter_dependency_tree(storage_pool, node_args):
+    # Be safe here as fatal errors will cause errors in Dispatcher
+    try:
+        arguments = []
+        arguments.append(_create_analysis_arguments('maven', 'net.iharder:base64', '2.3.9'))
+        arguments.append(_create_analysis_arguments('maven', 'junit:junit', '2.3.9'))
+
+        logger.info("Arguments for next flows: %s" % str(arguments))
+        return arguments
+    except Exception:
+        logger.exception("Failed to collect analysis dependencies")
+        return []
+
+
 def iter_dependencies_stack(storage_pool, node_args):
     # Be safe here as fatal errors will cause errors in Dispatcher
     try:

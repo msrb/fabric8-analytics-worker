@@ -31,3 +31,5 @@ from f8a_worker.workers.repository_description import RepositoryDescCollectorTas
 from f8a_worker.workers.result_collector import ResultCollector, PackageResultCollector
 from f8a_worker.workers.stackaggregator import StackAggregatorTask
 from f8a_worker.workers.stackaggregator_v2 import StackAggregatorV2Task
+from f8a_worker.workers.dependency_tree import DependencyTreeTask
+from f8a_worker.workers.gemini_report import GeminiReportTask
